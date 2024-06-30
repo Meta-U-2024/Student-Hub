@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from './components/Footer';
 import { Grid, Button, Container } from '@mui/material'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import { ThemeProvider } from './components/ThemeContext'
+
 import Navbar from './components/Navbar'
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
+
     <Router>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Container maxWidth="sm">
@@ -48,7 +48,7 @@ function App() {
       </Container>
       <Footer />
     </Router>
-    </ThemeProvider>
+
   );
 }
 

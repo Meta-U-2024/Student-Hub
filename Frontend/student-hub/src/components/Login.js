@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Grid, TextField, Button } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress'
-
 
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     //handles the submit when logged in.
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        setLoading(true);
+
         try{
             const response = await fetch('http://localhost:8080/auth/login',{
                 method: 'POST',
@@ -30,16 +27,13 @@ function Login() {
                 const data = await response.json();
                 sessionStorage.setItem('token', data.token);
                 navigate('/dashboard');
-                setLoading(false);
               } else {
                 const { error } = await response.json();
                 setError(error);
-                setLoading(false);
               }
             } catch (error) {
                 console.error('Login failed:', error);
                 setError('Login failed. Please try again.');
-                setLoading(false);
               }
             };
 
@@ -87,7 +81,6 @@ function Login() {
                       </Grid>
                     )}
                   </Grid>
-                  {loading && <CircularProgress color="inherit" />}
                 </Container>
               );
             }
