@@ -57,6 +57,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn}) {
                     <>
                     <Button color='inherit' component={Link} to="/courses">Course & Interest  </Button>
                     <Button color='inherit' component={Link} to="/mentorship"> Mentorship program  </Button>
+                    <Button color="inherit" component={Link} to="/friends">Friends</Button>
                     <IconButton
                         edge="end"
                         color="inherit"

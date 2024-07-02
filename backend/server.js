@@ -10,6 +10,7 @@ const mentorshipRoutes = require('./routes/mentorship');
 const postRoutes = require('./routes/post');
 const verifyToken = require('./middleware/auth');
 const { sequelize } = require('./models');
+const friendRoutes = require('./routes/friends')
 
 require('dotenv').config();
 
@@ -32,6 +33,7 @@ app.use('/dashboard', verifyToken, dashboardRoutes);
 app.use('/course', verifyToken, courseRoutes);
 app.use('/mentorship', verifyToken, mentorshipRoutes);
 app.use('/post', verifyToken, postRoutes);
+app.use('/friends', friendRoutes)
 
 // Test database connection
 sequelize.authenticate()

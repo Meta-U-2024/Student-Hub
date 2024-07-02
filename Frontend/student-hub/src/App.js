@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import CoursePage from './pages/CoursePage';
 import Profile from './pages/Profile';
 import MentorshipPage from './pages/MentorshipPage';
+import FriendsList from './pages/Friends';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
       <Route path="/feedback" element={<Feedback />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
+      <Route path="/friends" element={<FriendsList />} />
       </Routes>
       </Grid>
       </Grid>

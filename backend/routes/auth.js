@@ -195,7 +195,8 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     // Return the token as JSON response
-    res.status(200).json({ token });
+    res.status(200).json({ token, userId: user.id });
+    console.log(user.id)
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -223,6 +224,24 @@ router.get('/dashboard', verifyToken, async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+router.get('/user/:userId', async (req, res) => {
+  const userId = req.params.userId;
+
+  try{
+    const user = await User.findByPk(userId);
+
+    if(!user){
+      return res.status(404).json({error: 'User not found'});
+    }
+
+    // return user data
+    res.status(200).json(user);
+  } catch (error){
+    console.error('Error fetching user:', error);
+    res.status(500).json({error: 'Internal server error'})
+  }
+})
 
 //GET route for course data
 router.get('/courses', verifyToken, async (req, res) => {

@@ -43,11 +43,14 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.removeColumn('Users', 'phone');
+    await queryInterface.removeColumn('Users', 'emailVerified');
+    await queryInterface.removeColumn('Users', 'address');
+    await queryInterface.removeColumn('Users', 'city');
+    await queryInterface.removeColumn('Users', 'state');
+    await queryInterface.removeColumn('Users', 'school');
+    await queryInterface.removeColumn('Users', 'major');
+    await queryInterface.removeColumn('Users', 'interest');
+    await queryInterface.removeColumn('Users', 'mentorship');
   }
 };
